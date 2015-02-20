@@ -1,4 +1,4 @@
-<project  default="compile" basedir=".">
+<project  default="runTests" basedir=".">
 	<property name="src" location="src"/>
 	<property name="build" location="build"/>
 	<property name="classes" location="classes"/>

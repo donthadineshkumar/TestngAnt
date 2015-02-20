@@ -5,7 +5,12 @@
 		<classes>
 			<class name="TestingWithAnt"></class>
 		</classes>
-
+	</test>
+	
+	<test name="Guru99-Tests">
+		<classes>
+			<class name="TestDay6"></class>
+		</classes>
 	</test>
 
 </suite>
