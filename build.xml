@@ -1,0 +1,65 @@
+<project  default="compile" basedir=".">
+	<property name="src" location="src"/>
+	<property name="build" location="build"/>
+	<property name="classes" location="classes"/>
+	<property name="lib" location="build/lib"/>
+	<property name="jars" location="/home/dinesh/jars" />
+	<property name="test-results" location="results" />
+
+	<target name="init">
+		<delete dir="build"/>
+		<delete dir="${classes}"/>
+		<delete dir="${test-results}" />
+	</target>
+
+	<target name="create" depends="init">
+		<mkdir dir="${build}"/>
+		<mkdir dir="${lib}"/>
+		<mkdir dir="${classes}"/>
+		<mkdir dir="${test-results}" />
+	</target>
+
+	<!-- copies only a single file to a directory
+	<target name="copyjars" depends="create">
+		<copy file="${jars}/testng.jar" todir="${lib}"/>
+	</target>  -->
+
+
+	<target name="copyjars" depends="create">
+		<copy todir="${lib}">
+			<fileset dir="${jars}">
+				<include name="**/*.jar"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<path id="classpath">
+		<fileset dir="${lib}" includes="**/*.jar"/>
+	</path>
+
+	<target name="compile" depends="copyjars">
+		<javac includeantruntime="true" srcdir="${src}"  destdir="${classes}"
+      classpathref="classpath" compiler="javac1.7"/>
+	</target>
+
+	<!--TestNG defines their own Ant Task using Taskdef -->
+	<taskdef  name="testng" classname="org.testng.TestNGAntTask">
+		<classpath>
+			<pathelement location="${lib}/testng.jar"/>
+		</classpath>
+	</taskdef>
+	
+	
+	<target name="runTests" depends="compile">
+		<testng	outputdir="${test-results}" workingdir="${src}"
+			 haltonfailure="true">
+			<xmlfileset dir="${basedir}" includes="testng.xml"/>	
+			<classpath>
+				<path refid="classpath"/>
+				<path location="${classes}"/>
+			</classpath>
+		</testng>
+	</target>
+
+
+</project>
