@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="First Suite">
+<suite name="First Suite" preserve-order="true">
 
 	<test name="Ant-Based-Tests">
 		<classes>
@@ -7,10 +7,17 @@
 		</classes>
 	</test>
 	
-	<test name="Guru99-Tests">
+	<test name="Selenium Practical Guide -Chapter2">
 		<classes>
-			<class name="TestDay6"></class>
+			<class name="ContextClick"></class>
 		</classes>
 	</test>
 
+	<test name="Guru99 - Testing PDF Generation">
+		<classes>
+			<class name="Guru99Day7"></class>
+		</classes>
+	</test>
+
+	
 </suite>
