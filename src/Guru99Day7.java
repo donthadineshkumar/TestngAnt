@@ -48,8 +48,8 @@ public class Guru99Day7{
 		fetch.getElement("LINK", "Print Order").click();
 		
 		
-		//Commented - Pushing to git to make jenkins build
-/*		Thread.sleep(5000);
+		//Uncommented Robot Class for verifying Jenkins git polling
+		Thread.sleep(5000);
 		Robot rb;
 		try {
 			rb = new Robot();
@@ -64,7 +64,7 @@ public class Guru99Day7{
 		} catch (AWTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 			
 	}
 	
